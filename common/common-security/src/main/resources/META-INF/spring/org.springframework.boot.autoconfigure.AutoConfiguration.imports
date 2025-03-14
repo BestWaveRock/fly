@@ -1,0 +1,7 @@
+com.biscuits.fly.common.security.service.PigUserDetailsServiceImpl
+com.biscuits.fly.common.security.service.PigAppUserDetailsServiceImpl
+com.biscuits.fly.common.security.service.PigRedisOAuth2AuthorizationService
+com.biscuits.fly.common.security.service.PigRedisOAuth2AuthorizationConsentService
+com.biscuits.fly.common.security.component.PigSecurityInnerAspect
+com.biscuits.fly.common.security.component.PigSecurityMessageSourceConfiguration
+com.biscuits.fly.common.security.service.PigRemoteRegisteredClientRepository

@@ -1,0 +1,123 @@
+version: '4'
+services:
+  biscuits-mysql:
+    build:
+      context: ./db
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: Ljx123456
+    restart: always
+    container_name: biscuits-mysql
+    image: biscuits-mysql
+    ports:
+      - 33306:3306
+    networks:
+      - spring_cloud_default
+
+  biscuits-redis:
+    image: registry.cn-hangzhou.aliyuncs.com/dockerhub_mirror/redis
+    ports:
+      - 36379:6379
+    restart: always
+    container_name: biscuits-redis
+    hostname: biscuits-redis
+    networks:
+      - spring_cloud_default
+
+  biscuits-register:
+    build:
+      context: ./biscuits-register
+    restart: always
+    ports:
+      - 8848:8848
+      - 9848:9848
+    environment:
+      MYSQL_HOST: biscuits-mysql
+      REDIS_HOST: biscuits-redis
+      MYSQL_PWD: Ljx123456
+    container_name: biscuits-register
+    hostname: biscuits-register
+    image: biscuits-register
+    networks:
+      - spring_cloud_default
+
+  biscuits-gateway:
+    build:
+      context: ./biscuits-gateway
+    restart: always
+    ports:
+      - 9999:9999
+    container_name: biscuits-gateway
+    hostname: biscuits-gateway
+    image: biscuits-gateway
+    environment:
+      REDIS_HOST: biscuits-redis
+    networks:
+      - spring_cloud_default
+
+  biscuits-auth:
+    build:
+      context: ./biscuits-auth
+    restart: always
+    container_name: biscuits-auth
+    hostname: biscuits-auth
+    image: biscuits-auth
+    environment:
+      REDIS_HOST: biscuits-redis
+    networks:
+      - spring_cloud_default
+
+  biscuits-upms:
+    build:
+      context: ./biscuits-upms/biscuits-upms-biz
+    restart: always
+    container_name: biscuits-upms
+    hostname: biscuits-upms
+    image: biscuits-upms
+    environment:
+      MYSQL_HOST: biscuits-mysql
+      REDIS_HOST: biscuits-redis
+    networks:
+      - spring_cloud_default
+
+  biscuits-monitor:
+    build:
+      context: ./biscuits-visual/biscuits-monitor
+    restart: always
+    ports:
+      - 5001:5001
+    container_name: biscuits-monitor
+    hostname: biscuits-monitor
+    image: biscuits-monitor
+    networks:
+      - spring_cloud_default
+
+  biscuits-codegen:
+    build:
+      context: ./biscuits-visual/biscuits-codegen
+    restart: always
+    container_name: biscuits-codegen
+    hostname: biscuits-codegen
+    image: biscuits-codegen
+    environment:
+      MYSQL_HOST: biscuits-mysql
+      REDIS_HOST: biscuits-redis
+    networks:
+      - spring_cloud_default
+
+  biscuits-quartz:
+    build:
+      context: ./biscuits-visual/biscuits-quartz
+    restart: always
+    image: biscuits-quartz
+    container_name: biscuits-quartz
+    environment:
+      MYSQL_HOST: biscuits-mysql
+      REDIS_HOST: biscuits-redis
+    networks:
+      - spring_cloud_default
+
+networks:
+  spring_cloud_default:
+    name:  spring_cloud_default
+    driver: bridge

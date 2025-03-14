@@ -1,0 +1,9 @@
+docker push erin099/biscuits-register:latest
+docker push erin099/biscuits-quartz:latest
+docker push erin099/biscuits-auth:latest
+docker push erin099/biscuits-upms:latest
+docker push erin099/biscuits-gateway:latest
+docker push erin099/biscuits-codegen:latest
+docker push erin099/biscuits-monitor:latest
+docker push erin099/biscuits-mysql:latest
+docker push erin099/biscuits-ui:latest

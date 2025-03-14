@@ -1,0 +1,3 @@
+com.biscuits.fly.common.feign.PigFeignAutoConfiguration
+com.biscuits.fly.common.feign.sentinel.SentinelAutoConfiguration
+com.biscuits.fly.common.feign.sentinel.handle.GlobalBizExceptionHandler

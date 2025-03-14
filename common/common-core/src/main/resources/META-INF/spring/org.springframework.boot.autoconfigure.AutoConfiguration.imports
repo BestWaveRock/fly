@@ -1,0 +1,6 @@
+com.biscuits.fly.common.core.config.TaskExecutorConfiguration
+com.biscuits.fly.common.core.config.JacksonConfiguration
+com.biscuits.fly.common.core.config.RedisTemplateConfiguration
+com.biscuits.fly.common.core.config.RestTemplateConfiguration
+com.biscuits.fly.common.core.util.SpringContextHolder
+com.biscuits.fly.common.core.config.WebMvcConfiguration

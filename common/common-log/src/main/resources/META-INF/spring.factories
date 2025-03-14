@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+    com.biscuits.fly.common.log.init.ApplicationLoggerInitializer

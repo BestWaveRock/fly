@@ -1,0 +1,6 @@
+com.biscuits.fly.admin.api.feign.RemoteClientDetailsService
+com.biscuits.fly.admin.api.feign.RemoteDictService
+com.biscuits.fly.admin.api.feign.RemoteLogService
+com.biscuits.fly.admin.api.feign.RemoteParamService
+com.biscuits.fly.admin.api.feign.RemoteTokenService
+com.biscuits.fly.admin.api.feign.RemoteUserService
