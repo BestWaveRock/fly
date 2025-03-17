@@ -10,4 +10,4 @@ EXPOSE 9999
 
 ENV TZ=Asia/Shanghai JAVA_OPTS="-Xms512m -Xmx1024m -Djava.security.egd=file:/dev/./urandom"
 
-CMD sleep 50; java $JAVA_OPTS -jar app.jar
+CMD sleep 30; java $JAVA_OPTS -jar app.jar
