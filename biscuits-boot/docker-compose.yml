@@ -1,0 +1,45 @@
+services:
+  biscuits-mysql:
+    build:
+      context: ../db
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: Ljx123456
+    restart: always
+    container_name: biscuits-mysql
+    image: biscuits-mysql
+    ports:
+      - 33306:3306
+    networks:
+      - spring_cloud_default
+
+  biscuits-redis:
+    image: registry.cn-hangzhou.aliyuncs.com/dockerhub_mirror/redis
+    ports:
+      - 36379:6379
+    restart: always
+    container_name: biscuits-redis
+    hostname: biscuits-redis
+    networks:
+      - spring_cloud_default
+
+  biscuits-boot:
+    build:
+      context: .
+    ports:
+      - 9999:9999
+    restart: always
+    container_name: biscuits-boot
+    hostname: biscuits-boot
+    image: biscuits-boot
+    environment:
+      MYSQL_HOST: biscuits-mysql
+      REDIS_HOST: biscuits-redis
+      spring.profiles.active: prod
+    networks:
+      - spring_cloud_default
+
+networks:
+  spring_cloud_default:
+    name:  spring_cloud_default
+    driver: bridge

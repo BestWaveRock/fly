@@ -20,13 +20,15 @@ import com.biscuits.fly.common.security.annotation.EnablePigResourceServer;
 import com.biscuits.fly.common.swagger.annotation.EnablePigDoc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author lengleng 单体版本启动器，只需要运行此模块则整个系统启动
  */
 @EnablePigDoc(value = "admin", isMicro = false)
 @EnablePigResourceServer
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.biscuits"})
+@ComponentScan(basePackages = {"com.biscuits"})
 public class PigBootApplication {
 
 	public static void main(String[] args) {
